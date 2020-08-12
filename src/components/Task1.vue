@@ -29,6 +29,7 @@ export default {
 
       let typedText = document.querySelector(".typedText");
       typedText.innerHTML = this.color;
+      typedText.style.color = "red";
 
       let input = document.querySelector(".task1__form__input");
       input.value = "";
