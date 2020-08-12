@@ -22,14 +22,18 @@ export default {
       color: ""
     };
   },
-  methods: {
+  computed: {
     changeColor: function(event) {
       let formContainer = document.querySelector(".task1");
       formContainer.style.backgroundColor = `${this.color}`;
 
       let typedText = document.querySelector(".typedText");
       typedText.innerHTML = this.color;
-      typedText.style.color = "red";
+      if (this.color == "red") {
+        typedText.style.color = "white";
+      } else {
+        typedText.style.color = "red";
+      }
 
       let input = document.querySelector(".task1__form__input");
       input.value = "";
