@@ -1,13 +1,13 @@
 <template>
-  <div class="task1">
+  <div ref="formContainer" class="task1">
     <h1>Task #1</h1>
     <form action="#" method="get" class="task1__form" id="color-form" @submit.prevent="changeColor">
-      <input name="color-form" type="text" class="task1__form__input" v-model="color" />
+      <input ref="input" name="color-form" type="text" class="task1__form__input" v-model="color" />
       <button type="submit" form="color-form" class="task1__form__button">submit</button>
     </form>
     <h2>
       You have typed:
-      <span class="typedText"></span>
+      <span ref="typedText" class="typedText"></span>
     </h2>
   </div>
 </template>
@@ -24,19 +24,19 @@ export default {
   },
   computed: {
     changeColor: function(event) {
-      let formContainer = document.querySelector(".task1");
-      formContainer.style.backgroundColor = `${this.color}`;
+      //let formContainer = document.querySelector(".task1");
+      this.$refs.formContainer.style.backgroundColor = `${this.color}`;
 
-      let typedText = document.querySelector(".typedText");
-      typedText.innerHTML = this.color;
+      //let typedText = document.querySelector(".typedText");
+      this.$refs.typedText.innerHTML = this.color;
       if (this.color == "red") {
-        typedText.style.color = "white";
+        this.$refs.typedText.style.color = "white";
       } else {
-        typedText.style.color = "red";
+        this.$refs.typedText.style.color = "red";
       }
 
-      let input = document.querySelector(".task1__form__input");
-      input.value = "";
+      //let input = document.querySelector(".task1__form__input");
+      this.$refs.input.value = "";
     }
   }
 };
