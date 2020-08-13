@@ -1,21 +1,27 @@
 <template>
   <div id="app">
-    <ShoppingList />
+    <Task1 />
   </div>
 </template>
 
 <script>
-import ShoppingList from "./components/ShoppingList.vue";
+import Task1 from "./components/Task1.vue";
 
 export default {
   name: "App",
   components: {
-    ShoppingList
+    Task1
   }
 };
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,5 +29,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: lavender;
 }
 </style>
