@@ -1,25 +1,11 @@
 <template>
   <div id="app">
-    <div class="container">
-      <NewTodo v-on:create="onTodoCreate" />
-      <h3>Todo</h3>
-      <ul>
-        <template v-for="(todoItem, index) in data">
-          <li v-if="!todoItem.status" :key="index">
-            <TodoComponent v-bind:todo="todoItem" v-on:delete="onDelete" />
-          </li>
-        </template>
-      </ul>
+    <Header />
+    <main>
+      <router-view></router-view>
+    </main>
 
-      <h3>Completed</h3>
-      <ul>
-        <template v-for="(todoItem, index) in data">
-          <li v-if="todoItem.status" :key="index">
-            <TodoComponent v-bind:todo="todoItem" v-on:delete="onDelete" />
-          </li>
-        </template>
-      </ul>
-    </div>
+    <div class="container"></div>
   </div>
 </template>
 
@@ -27,42 +13,37 @@
 import { Todo } from "./Todo";
 import TodoComponent from "./components/Todo";
 import NewTodo from "./components/NewTodo";
+import Header from "./components/Header";
 
 export default {
   name: "App",
   components: {
     TodoComponent,
-    NewTodo
+    NewTodo,
+    Header,
   },
   data() {
     return {
       data: [
         new Todo("Some 1", 1),
         new Todo("Some 2", 2),
-        new Todo("Some 3", 3)
-      ]
+        new Todo("Some 3", 3),
+      ],
     };
   },
   methods: {
-    onDelete(deletedId) {
-      this.data = this.data.filter(({ id }) => id !== deletedId);
-    },
+    // onDelete(deletedId) {
+    //   this.data = this.data.filter(({ id }) => id !== deletedId);
+    // },
     onTodoCreate(todo) {
       this.data = [...this.data, todo];
-    }
+    },
   },
-  beforeMount() {
-    this.data[1].status = true;
-  }
+  beforeCreate() {
+    this.$store.dispatch("fetchData");
+  },
 };
 </script>
-
-
-
-
-
-
-
 
 <style lang="scss">
 /* Basic Style */
@@ -70,6 +51,12 @@ body {
   background: #fff;
   color: #333;
   font-family: Lato, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  height: calc(100vh-40px);
 }
 .container {
   display: block;

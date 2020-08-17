@@ -1,7 +1,7 @@
 export class Todo {
-  constructor(text, id = new Date().getTime()) {
+  constructor(title, id = new Date().getTime()) {
     this.id = id;
-    this.text = text;
-    this.status = false;
+    this.title = title;
+    this.completed = false;
   }
 }
