@@ -2,18 +2,21 @@
   <div id="app">
     <Task1 />
     <Task2 />
+    <Task3 />
   </div>
 </template>
 
 <script>
 import Task1 from "./components/Task1.vue";
 import Task2 from "./components/Task2.vue";
+import Task3 from "./components/Task3.vue";
 
 export default {
   name: "App",
   components: {
     Task1,
-    Task2
+    Task2,
+    Task3
   }
 };
 </script>
@@ -32,7 +35,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   width: 100vw;
-  height: 1200px;
+  height: auto;
   background-color: lavender;
   display: flex;
   flex-direction: column;
